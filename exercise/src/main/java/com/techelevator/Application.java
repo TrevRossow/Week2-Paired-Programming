@@ -11,6 +11,7 @@ public class Application {
     List<Department> departments = new ArrayList<>();
     List<Employee> employees = new ArrayList<>();
     Map<String, Project> projects = new HashMap<>();
+    List<Employee> engineeringEmployees = new ArrayList<>();
 
     /**
      * The main entry point in the application
@@ -111,6 +112,7 @@ public class Application {
 
         System.out.println("\n------------- EMPLOYEES ------------------------------");
         for (int i = 0; i < employees.size(); i++) {
+
             System.out.println(employees.get(i).getFullName() + " (" + employees.get(i).getSalary() + ") " + employees.get(i).getDepartment().getName());
 
         }
@@ -121,7 +123,17 @@ public class Application {
      */
     private void createTeamsProject() {
 
-        Project 
+        Project project1 = new Project("TEams", "Project Management Software", "10/10/2020", "11/10/2020");
+
+        for (Employee emp : employees) {
+            if(emp.getDepartment().getName().equalsIgnoreCase("engineering")){
+                engineeringEmployees.add(emp);
+
+            }
+
+        }
+        project1.setTeamMembers(engineeringEmployees);
+
 
     }
 
