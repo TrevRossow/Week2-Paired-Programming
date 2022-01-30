@@ -12,6 +12,7 @@ public class Application {
     List<Employee> employees = new ArrayList<>();
     Map<String, Project> projects = new HashMap<>();
     List<Employee> engineeringEmployees = new ArrayList<>();
+    List<Employee> marketingEmployees = new ArrayList<>();
 
     /**
      * The main entry point in the application
@@ -123,7 +124,7 @@ public class Application {
      */
     private void createTeamsProject() {
 
-        Project project1 = new Project("TEams", "Project Management Software", "10/10/2020", "11/10/2020");
+        Project teams = new Project("TEams", "Project Management Software", "10/10/2020", "11/10/2020");
 
         for (Employee emp : employees) {
             if(emp.getDepartment().getName().equalsIgnoreCase("engineering")){
@@ -132,7 +133,8 @@ public class Application {
             }
 
         }
-        project1.setTeamMembers(engineeringEmployees);
+        teams.setTeamMembers(engineeringEmployees);
+        projects.put(teams.getName(),teams);
 
 
     }
@@ -141,6 +143,18 @@ public class Application {
      * Create the 'Marketing Landing Page' project.
      */
     private void createLandingPageProject() {
+        Project project = new Project("Marketing Landing Page", "Lead Capture Landing Page for Marketing", "10/10/2020", "10/17/2020");
+
+
+        for (Employee emp : employees) {
+            if(emp.getDepartment().getName().equalsIgnoreCase("marketing")){
+                marketingEmployees.add(emp);
+
+            }
+
+        }
+        project.setTeamMembers(marketingEmployees);
+        projects.put(project.getName(),project);
 
     }
 
@@ -148,8 +162,10 @@ public class Application {
      * Print out each project in the collection.
      */
     private void printProjectsReport() {
-        System.out.println("\n------------- PROJECTS ------------------------------");
 
+        System.out.println("\n------------- PROJECTS ------------------------------");
+        System.out.println("TEams: " + engineeringEmployees.size());
+        System.out.println("Marketing Landing Page: " + marketingEmployees.size());
     }
 
 }
