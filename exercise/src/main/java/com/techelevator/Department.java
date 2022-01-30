@@ -21,7 +21,7 @@ public class Department {
     }
 
     public String getName() {
-        return this.getName();
+        return this.name;
     }
 
     public void setName(String name) {
